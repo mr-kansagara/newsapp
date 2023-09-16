@@ -1,0 +1,84 @@
+import React, { Component } from 'react'
+import NewsItems from './NewsItems'
+
+export class News extends Component {
+  articles = [
+    {
+      "source": {
+        "id": "reuters",
+        "name": "Reuters"
+      },
+      "author": "Valerie Insinna, Abhijith Ganapavaram",
+      "title": "RTX engine issue will ground 350 A320neos through 2026 - Reuters",
+      "description": "Aerospace supplier RTX <a href=\"https://www.reuters.com/markets/companies/RTX.N\" target=\"_blank\">(RTX.N)</a> said on Monday that an average of 350 Airbus <a href=\"https://www.reuters.com/markets/companies/AIR.PA\" target=\"_blank\">(AIR.PA)</a> A320neos will be …",
+      "url": "https://www.reuters.com/markets/deals/rtx-expects-3-bln-hit-q3-pratt-whitney-gtf-engine-issues-2023-09-11/",
+      "urlToImage": "https://www.reuters.com/resizer/22X0NQqfCqjY_VAdIff3Mzzdl2w=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/RON5NMRSBNOMHODFZSR7HYQPPM.jpg",
+      "publishedAt": "2023-09-11T14:19:00Z",
+      "content": "Sept 11 (Reuters) - Aerospace supplier RTX (RTX.N) said on Monday that an average of 350 Airbus (AIR.PA) A320neos will be grounded through 2026 as its Pratt &amp; Whitney engines unit removes geared … [+3572 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "CNBC"
+      },
+      "author": "Lillian Rizzo",
+      "title": "Disney, Charter near deal that would end cable blackout, sources say - CNBC",
+      "description": "News of the agreement came hours before \"Monday Night Football\" was set to air on Disney's ESPN.",
+      "url": "https://www.cnbc.com/2023/09/11/disney-charter-near-carriage-deal-that-would-end-cable-blackout-sources-say.html",
+      "urlToImage": "https://image.cnbcfm.com/api/v1/image/107298463-1694443928943-gettyimages-1237517099-164211220_222_min_at_chi.jpeg?v=1694444419&w=1920&h=1080",
+      "publishedAt": "2023-09-11T14:07:58Z",
+      "content": "The blackout fight between cable giant Charter Communications and Disney is over.\r\nHours ahead of \"Monday Night Football,\" which airs on Disney's ESPN, the companies reached a deal that would allow m… [+3227 chars]"
+    },
+    {
+      "source": {
+        "id": "the-washington-post",
+        "name": "The Washington Post"
+      },
+      "author": "Teddy Amenabar",
+      "title": "American Red Cross announces national blood shortage - The Washington Post",
+      "description": "A summer slump in donations, made worse by climate disasters, has led to a national shortage at the American Red Cross, which distributes 40 percent of the blood supply.",
+      "url": "https://www.washingtonpost.com/wellness/2023/09/11/blood-shortage-american-red-cross/",
+      "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/JQGUYW5NCCXFHFH6H6KBQDLPOQ_size-normalized.jpg&w=1440",
+      "publishedAt": "2023-09-11T14:00:00Z",
+      "content": "Comment on this story\r\nComment\r\nThe American Red Cross announced a national blood shortage and is calling on more people to donate blood and platelets to shore up its supply, which it said has fallen… [+5980 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Fox Business"
+      },
+      "author": "Anders Hagstrom",
+      "title": "Bill Gates says Elon Musk was 'super mean to me' after Tesla stock feud - Fox Business",
+      "description": "Billionaire Bill Gates complained that X owner Elon Musk was \"super mean\" to him following a spat between the two over Tesla stock last year.",
+      "url": "https://www.foxbusiness.com/business-leaders/bill-gates-says-elon-musk-super-mean-me-after-tesla-stock-feud",
+      "urlToImage": "https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2023/07/0/0/elon-musk-2.jpg?ve=1&tl=1",
+      "publishedAt": "2023-09-11T13:38:23Z",
+      "content": "Billionaire Elon Musk was \"super mean\" to fellow billionaire Bill Gates after the Microsoft co-founder purchased a short position on Tesla stock, Gates says.\r\nGates made the comment to author Walter … [+1885 chars]"
+    }
+  ]
+
+  constructor() {
+    super();
+    console.log("this is the news constructor")
+    this.state = {
+      articles: this.articles,
+      loading: false
+    }
+  }
+  render() {
+    return (
+      <div className='container my-3'>
+        <h2>NewsMonkey - Top headlines</h2>
+        <div className='row'>
+        {this.state.articles.map((element) => {
+          return <div className='col-md-4' key={element.url} >
+            <NewsItems title={element.title.slice(0,50)} description={element.description.split(0,80)} imageUrl={element.urlToImage} newsUrl={element.url}/>
+          </div>
+        })}
+        </div>
+      </div>
+    )
+  }
+}
+
+export default News
